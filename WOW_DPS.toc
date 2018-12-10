@@ -1,0 +1,6 @@
+## Interface: 80000
+## Title: WOW DPS
+## Notes: 一键 DPS 插件
+## Author: HanXiao
+## Version: 2402
+WOW_DPS.lua
