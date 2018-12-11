@@ -4,6 +4,7 @@
 ## Author: HanXiao
 ## Version: 1.0.0
 
+Condition.lua
 WOW_COMMAND.lua
 WOW_BUTTON.lua
-WOW_DPS.lua
+WOW_MAIN.lua

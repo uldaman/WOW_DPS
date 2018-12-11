@@ -1,3 +1,4 @@
+local Condition = ...
 WOW_COMMAND = {}
 
 WOW_COMMAND.canUseSkill = function(skill)
@@ -14,6 +15,11 @@ WOW_COMMAND.canUseSkill = function(skill)
 end
 
 
-WOW_COMMAND.calcMacroCondition = function(condition)
+WOW_COMMAND.calcMacroCondition = function()
+    if not next(Condition) then
+        print('Failed to load Condition.lua.')
+        return
+    end
+
     return condition
 end
