@@ -21,5 +21,9 @@ WOW_COMMAND.calcMacroCondition = function()
         return
     end
 
-    return condition
+    local pre = Condition[PreMacro]
+    local seq = Condition[Sequences]
+    local post = PostMacro[PostMacro]
+
+    return format("%s\n%s\n%s", pre, seq, post)
 end

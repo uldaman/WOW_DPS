@@ -1,5 +1,15 @@
 local Condition = ...
 
-Condition = [[
-    cast 愈合
-]]
+Condition = {
+    PreMacro = [[
+        /petattack
+    ]],
+
+    Sequences = [[
+        /cast 愈合
+    ]],
+
+    PostMacro = [[
+        /startattack
+    ]]
+}

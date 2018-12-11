@@ -17,9 +17,9 @@ WOW_BUTTON.mainLogic = function(button)
     WOW_COMMAND.canUseSkill("愈合")
 end
 
--- macro like: cast 愈合 or petattack
+-- macro like: /cast 愈合 or /petattack
 WOW_BUTTON.runMacro = function(button, macro)
     -- SetMacroSpell(button.GetName(), skill, nil)
     -- button:SetAttribute("macro", macro)
-    button:SetAttribute("macrotext", "/" .. macro)
+    button:SetAttribute("macrotext", macro)
 end
