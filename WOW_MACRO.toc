@@ -1,6 +1,6 @@
 ## Interface: 80000
-## Title: WOW DPS
-## Notes: 一键 DPS 插件
+## Title: WOW MACRO
+## Notes: 超级宏
 ## Author: HanXiao
 ## Version: 1.0.0
 
