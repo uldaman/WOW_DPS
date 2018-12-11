@@ -6,14 +6,15 @@ WOW_BUTTON.createMacroButton = function(name)
     -- local script = "\
     -- self:CallMethod('logic')\
     -- self:SetAttribute('macrotext', '/cast ' .. self:GetAttribute('macro'))"
-    button:WrapScript(button, "OnClick", "self:CallMethod('calcMacroCondition')")
-    button.calcMacroCondition = WOW_BUTTON.calcMacroCondition
+    button:WrapScript(button, "OnClick", "self:CallMethod('mainLogic')")
+    button.mainLogic = WOW_BUTTON.mainLogic
     return button
 end
 
-WOW_BUTTON.calcMacroCondition = function(button)
+WOW_BUTTON.mainLogic = function(button)
     -- 通过某些计算拿到要释放的技能
-    WOW_BUTTON.cast(button, "愈合")
+    -- WOW_BUTTON.cast(button, "愈合")
+    WOW_COMMAND.canUseSkill("愈合")
 end
 
 WOW_BUTTON.cast = function(button, skill)
