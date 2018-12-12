@@ -1,4 +1,3 @@
-local Condition = ...
 WOW_COMMAND = {}
 
 WOW_COMMAND.canUseSkill = function(skill)
@@ -14,16 +13,22 @@ WOW_COMMAND.canUseSkill = function(skill)
     end
 end
 
-
-WOW_COMMAND.calcMacroCondition = function()
-    if not next(Condition) then
-        print('Failed to load Condition.lua.')
-        return
+-- fn: UnitBuff UnitDebuff
+-- unit: "player" "target"
+WOW_COMMAND.checkBuff = function(fn, unit, buffName)
+    for i = 1, 40 do
+        local name = fn(unit, i)
+        if name and name == buffName then
+            return true
+        end
     end
+    return false
+end
 
-    local pre = Condition[PreMacro]
-    local seq = Condition[Sequences]
-    local post = PostMacro[PostMacro]
+WOW_COMMAND.hasBuff = function(unit, buffName)
+    return WOW_COMMAND.checkBuff(UnitBuff, unit, debuffName)
+end
 
-    return format("%s\n%s\n%s", pre, seq, post)
+WOW_COMMAND.hasDebuff = function(unit, debuffName)
+    return WOW_COMMAND.checkBuff(UnitDebuff, unit, debuffName)
 end
