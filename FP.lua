@@ -1,6 +1,20 @@
 FP = {}
 
-FP.reduce = function(list, fn, init)
+-- 左闭右开 (包含 from, 不包含 to)
+FP.range = function(from, to, step)
+    local nums, i = {}, 1
+    for v = from, to - 1, step or 1 do
+        nums[i] = v
+        i = i + 1
+    end
+    return nums
+end
+
+FP.any = function(fun, gen_x, param_x, state_x)
+
+end
+
+FP.reduce = function(fn, init, list)
     local accumlator = init or list[1]
 
     if init then
@@ -19,7 +33,7 @@ end
 FP.pipe = function( ... )
     local args = { ... }
     return function(v)
-        return FP.reduce(args, function(acc, fn) return fn(acc) end, v)
+        return FP.reduce(function(acc, fn) return fn(acc) end, v, args)
     end
 end
 
