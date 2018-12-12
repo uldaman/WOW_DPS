@@ -4,8 +4,6 @@
 ## Author: HanXiao
 ## Version: 1.0.0
 
-FP.lua
-WOW_COMMAND.lua
 SURVIVAL_HUNTER.lua
 WOW_BUTTON.lua
 WOW_MAIN.lua

@@ -1,11 +1,6 @@
-local serpentSting = function()
-    if not hasDebuff("target", "毒蛇钉刺") or hasBuff("player", "xxx") then
-        return true
-    end
-    return false
-end
-
 SurvivalHunter = {
-    {condition = serpentSting, macro = "/cast 毒蛇钉刺"},
+    "/cast 鱼叉猛刺",
+    "/cast 杀戮命令",
+    "/cast 野火炸弹",
+    "/cast 削凿"
 }
-
