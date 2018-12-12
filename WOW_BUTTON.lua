@@ -1,19 +1,37 @@
 WOW_BUTTON = {}
 
--- loop 加入优先级， 1，12，123，1234
-local OnClick =  [=[
-    local step = self:GetAttribute("step")
+ -- 优先级， 1，12，123，1234 ...
+local PriorityOnClick =  [=[
+    local length = self:GetAttribute("length")
     local limit = self:GetAttribute("limit")
+    local step = self:GetAttribute("step")
     self:SetAttribute("macrotext", macros[step])
-    local next = (step == limit and 1 or step + 1)
-    self:SetAttribute("step", next)
-    self:CallMethod('updateIcon', macros[next])
+    if step == limit then
+        step = 1
+        limit = limit == length and 1 or limit + 1
+    else
+        step = step + 1
+    end
+    self:SetAttribute("step", step)
+    self:SetAttribute("limit", limit)
+    self:CallMethod('updateIcon', macros[step])
+]=]
+
+-- 顺序， 1234，1234 ...
+local OnClick =  [=[
+    local length = self:GetAttribute("length")
+    local step = self:GetAttribute("step")
+    self:SetAttribute("macrotext", macros[step])
+    step = (step == length and 1 or step + 1)
+    self:SetAttribute("step", step)
+    self:CallMethod('updateIcon', macros[step])
 ]=]
 
 WOW_BUTTON.createMacroButton = function(name)
     local button = CreateFrame("Button", name, nil, "SecureActionButtonTemplate,SecureHandlerBaseTemplate")
     button:SetAttribute("type", "macro")
-    button:SetAttribute("limit", #SurvivalHunter)
+    button:SetAttribute("length", #SurvivalHunter)
+    button:SetAttribute("limit", 1)
     button:SetAttribute("step", 1)
     button:Execute('name, macros = self:GetName(), newtable([=======[' .. strjoin(']=======],[=======[', unpack(SurvivalHunter)) .. ']=======])')
     button:WrapScript(button, "OnClick", OnClick)
