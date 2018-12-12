@@ -1,5 +1,4 @@
 WOW_BUTTON = {
-    step = 1,
     sequences = SurvivalHunter
 }
 
@@ -11,10 +10,9 @@ WOW_BUTTON.createMacroButton = function(name)
 end
 
 WOW_BUTTON.mainLogic = function(button)
-    index = FP.findIndex(function(sequence) return sequence.condition() end, WOW_BUTTON.sequences, WOW_BUTTON.step)
-    if index then
-        WOW_BUTTON.step = (index == #WOW_BUTTON.sequences) and 1 or (index + 1)
-        WOW_BUTTON.runMacro(button, WOW_BUTTON.sequences[index].macro)
+    sequence = FP.find(function(sequence) return sequence.condition() end, WOW_BUTTON.sequences)
+    if sequence then
+        WOW_BUTTON.runMacro(button, sequence.macro)
     end
 end
 
