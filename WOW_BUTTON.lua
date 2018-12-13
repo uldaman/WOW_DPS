@@ -34,16 +34,15 @@ WOW_BUTTON.createMacroButton = function(name)
     button:SetAttribute("limit", 1)
     button:SetAttribute("step", 1)
     button:Execute('name, macros = self:GetName(), newtable([=======[' .. strjoin(']=======],[=======[', unpack(SurvivalHunter)) .. ']=======])')
-    button:WrapScript(button, "OnClick", OnClick)
+    button:WrapScript(button, "OnClick", PriorityOnClick)
     button.updateIcon = WOW_BUTTON.updateIcon
 end
 
 WOW_BUTTON.updateIcon = function(button, a)
-    -- 1. 去空格，2. 去 /，3. 去英文
-    skill = a:gsub("%s*",""):gsub("%/",""):gsub("%a+","")
+    -- 1. 去空格，2. 去 /，3. 去英文，4. 去方括号
+    skill = a:gsub("%s*",""):gsub("%/",""):gsub("%a+",""):gsub("%b[]","")
     if skill ~= "" then
         SetMacroSpell(button:GetName(), skill, nil)
     end
-
     -- 考虑做个普攻技能的提示， 因为普攻技能没有CD，会卡循环，所以再好不要加入序列
 end
