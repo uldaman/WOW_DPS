@@ -15,6 +15,13 @@ def press(key):
     dm.KeyPressChar(key)
 
 
+def hitPress(key, count):
+    if count <= 0:
+        return
+    dm.KeyPressChar(key)
+    return hitPress(key, count - 1)
+
+
 def hotkey(control, key):
     """hot_key_char('shift', '2') => @
     """
@@ -22,25 +29,3 @@ def hotkey(control, key):
     dm.KeyDownChar(key)
     dm.KeyUpChar(key)
     dm.KeyUpChar(control)
-
-
-class KeyHandler(object):
-    q_down = False
-
-    @classmethod
-    def handl_q(cls, is_down):
-        cls.q_down = is_down
-
-    @classmethod
-    def handle_key_down(cls):
-        if cls.q_down:
-            press("~")
-
-
-def get_key_handler(key_vk):
-    return _key_handler.get(key_vk, lambda x: None)
-
-
-_key_handler = {
-    "Q": KeyHandler.handl_q,
-}

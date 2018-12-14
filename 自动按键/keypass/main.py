@@ -2,32 +2,16 @@ import time
 import pyHook
 import threading
 import pythoncom
-from .keypass import get_key_handler, KeyHandler
+from .qhandler import QHandler
 
-
-def on_key_down_event(event):
-    if event.WindowName == "魔兽世界":
-        get_key_handler(event.Key)(True)
-    return True
-
-
-def on_key_up_event(event):
-    if event.WindowName == "魔兽世界":
-        get_key_handler(event.Key)(False)
-    return True
-
-
-def key_down_loop():
-    while True:
-        KeyHandler.handle_key_down()
-        time.sleep(1 / 16)
+handler = QHandler("魔兽世界", 4)
 
 
 def main():
-    threading.Thread(target=key_down_loop, name='key_down_loop').start()
+    threading.Thread(target=handler.handle_loop, name='key_down_loop').start()
     hookMgr = pyHook.HookManager()
-    hookMgr.KeyDown = on_key_down_event
-    hookMgr.KeyUp = on_key_up_event
+    hookMgr.KeyDown = handler.on_key_down_event
+    hookMgr.KeyUp = handler.on_key_up_event
     hookMgr.HookKeyboard()
     pythoncom.PumpMessages()
 
