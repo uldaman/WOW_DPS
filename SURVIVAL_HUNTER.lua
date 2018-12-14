@@ -1,7 +1,7 @@
 SurvivalHunter = {
     guard = [[
-        /stopmacro [noexists][dead]
-        /petattack
+/stopmacro [noexists][dead]
+/petattack
     ]],
 
     -- change 自动按键 hitPress

@@ -1,3 +1,4 @@
+import time
 from .keypass import hitPress
 
 
@@ -15,11 +16,11 @@ class QHandler(object):
             time.sleep(1 / 16)
 
     def on_key_down_event(self, event):
-        if event.Key = "Q" and event.WindowName == self.window_name:
+        if event.Key == "Q" and event.WindowName == self.window_name:
             self.q_down = True
         return True
 
     def on_key_up_event(self, event):
-        if event.Key = "Q" and event.WindowName == self.window_name:
+        if event.Key == "Q" and event.WindowName == self.window_name:
             self.q_down = False
         return True

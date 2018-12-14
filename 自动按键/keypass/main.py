@@ -1,4 +1,3 @@
-import time
 import pyHook
 import threading
 import pythoncom
