@@ -3,7 +3,7 @@ import threading
 import pythoncom
 from .qhandler import QHandler
 
-handler = QHandler("魔兽世界", 3)
+handler = QHandler("魔兽世界", 6)
 
 
 def main():

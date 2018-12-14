@@ -7,7 +7,7 @@ class QHandler(object):
     def __init__(self, window_name, loop_count):
         self.q_down = False
         self.window_name = window_name
-        self.loop_count = loop_count * (loop_count + 1) / 2
+        self.loop_count = loop_count
 
     def handle_loop(self):
         while True:

@@ -39,7 +39,7 @@ WOW_BUTTON.createMacroButton = function(name)
     button:SetAttribute("limit", 1)
     button:SetAttribute("step", 1)
     button:Execute('name, macros = self:GetName(), newtable([=======[' .. strjoin(']=======],[=======[', unpack(sequence)) .. ']=======])')
-    button:WrapScript(button, "OnClick", PriorityOnClick)
+    button:WrapScript(button, "OnClick", OnClick)
     button.updateIcon = WOW_BUTTON.updateIcon
 end
 
