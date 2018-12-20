@@ -1,6 +1,7 @@
 SurvivalHunter = {
     guard = [[
-/stopmacro [noexists][dead]
+/stopmacro [noexists][dead][noharm]
+/cast [@pet,nogroup][@focus,group] 误导
 /petattack
     ]],
 
