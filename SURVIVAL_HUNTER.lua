@@ -2,7 +2,6 @@ SurvivalHunter = {
     guard = [[
 /stopmacro [noexists][dead][noharm]
 /cast [@pet,nogroup][@focus,group] 误导
-/petattack
     ]],
 
     -- change 自动按键 hitPress
@@ -16,6 +15,7 @@ SurvivalHunter = {
     },
 
     clean = [[
+/petattack
 /startattack
     ]]
 }
